@@ -1,39 +1,44 @@
-## Generic Data Structure Library (GDS)
+# Generic Data Structure Library (GDS)
 
-A simple C++ library providing common data structures like Linked lists, stacks, queues, It's designed to be easy to use and extend.
+A simple C++ library providing common data structures like Linked lists, stacks, queues. It's designed to be easy to use and extend.
 
 ## Features
-
-Linked List: Singly and doubly linked lists.
-
-Stack: Basic stack operations.
-
-Queue: Basic queue operations.
+- **Linked List**: Singly and doubly linked lists.
+- **Stack**: Basic stack operations.
+- **Queue**: Basic queue operations.
 
 ## Installation
 
-Clone the repository:
+To compile and run the Generic Data Structure Library project, follow these steps:
 
-git clone https://github.com/Mayurdpatil67/generic-data-structure-library.git
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/Mayurdpatil67/generic-data-structure-library.git
+    ```
 
-Navigate to the directory:
+2. Navigate to the directory:
+    ```bash
+    cd generic-data-structure-library
+    ```
 
-cd generic-data-structure-library
+3. Compile the code:
+    ```bash
+    g++ -o gds main.cpp
+    ```
 
-Compile the code:
-
-g++ -o gds main.cpp
-
-Run the program:
-
-./gds
-
+4. Run the program:
+    ```bash
+    ./gds
+    ```
 
 ## Contributing
-Fork the repo.
 
-Create a branch (git checkout -b feature/YourFeature).
+Contributions to the Generic Data Structure Library are welcome! If you find any issues or have ideas for improvements, feel free to open an issue or submit a pull request.
 
-Commit your changes.
-
-Push and open a pull request.
+1. Fork the repository.
+2. Create a branch:
+    ```bash
+    git checkout -b feature/YourFeature
+    ```
+3. Commit your changes.
+4. Push to the branch and open a pull request.
