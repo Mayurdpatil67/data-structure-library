@@ -1005,6 +1005,7 @@ class Queue
 {
     public:
         struct nodeG<T> *First;
+        struct nodeG<T> *Last;
         int iCount;
 
         Queue();
@@ -1016,87 +1017,83 @@ class Queue
 };
 
 template <class T>
-Queue<T> :: Queue()
+Queue<T>::Queue()
 {
     First = NULL;
+    Last = NULL;
     iCount = 0;
 }
 
 template <class T>
-bool Queue<T> :: IsQueueEmpty()
+bool Queue<T>::IsQueueEmpty()
 {
-    if(iCount == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return iCount == 0;
 }
 
 template <class T>
-void Queue<T> :: EnQueue(T No)
+void Queue<T>::EnQueue(T No)
 {
     struct nodeG<T> *newn = new struct nodeG<T>;
 
     newn->data = No;
     newn->next = NULL;
 
-    if(First == NULL)
+    if (First == NULL && Last == NULL)  // If the queue is empty
     {
         First = newn;
+        Last = newn;
     }
     else
     {
-        struct nodeG<T> *temp = First; 
-        
-        while(temp->next != NULL)
-        {
-            temp = temp->next;
-        }
-        temp->next = newn;
+        Last->next = newn;
+        Last = newn;
     }
+
     iCount++;
 }
 
 template <class T>
-T Queue<T> :: DeQueue()
+T Queue<T>::DeQueue()
 {
-    if(First == NULL)
+    if (First == NULL)
     {
-        cout<<"Queue is Empty"<<"\n";
-        return (T) -1;
+        cout << "Queue is Empty\n";
+        return (T)-1;  // Error code for empty queue
     }
     else
     {
-        T Value = First->data;
         struct nodeG<T> *temp = First;
+        T value = First->data;
+
         First = First->next;
+        if (First == NULL)  // If the queue becomes empty
+        {
+            Last = NULL;
+        }
+
         delete temp;
         iCount--;
-        return Value;
+        return value;
     }
 }
 
 template <class T>
-void Queue<T> :: Display()
+void Queue<T>::Display()
 {
-    if(First == NULL)
+    if (First == NULL)
     {
-        cout<<"Queue is Empty"<<"\n";
+        cout << "Queue is Empty\n";
+        return;
     }
-    else
+
+    cout << "Elements in Queue: \n";
+    struct nodeG<T> *temp = First;
+    while (temp != NULL)
     {
-        cout<<"Element in Queue is : "<<"\n";
-        struct nodeG<T> *temp = First;
-        while(temp != NULL)
-        {
-            cout<<"| "<<temp->data<<" | => ";
-            temp = temp->next;
-        }
-        cout<<"\n";
+        cout << "| " << temp->data << " | => ";
+        temp = temp->next;
     }
+    cout << "NULL\n";
 }
 
 ////////////////////////////////////////////////////////////////
